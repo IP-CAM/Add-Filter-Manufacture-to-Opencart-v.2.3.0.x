@@ -2,12 +2,7 @@
 
 // Heading 
 
-$_['heading_title'] = 'فیلتر';
+$_['heading_title'] = 'برند';
 
-
-
-// Text
-
-$_['text_tax']      = 'قیمت بدون مالیات:'; 
 
 ?>
