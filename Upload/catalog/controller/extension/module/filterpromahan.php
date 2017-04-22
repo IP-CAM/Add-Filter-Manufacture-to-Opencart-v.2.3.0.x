@@ -1,9 +1,9 @@
 <?php
-class ControllerModuleFilterpromahan extends Controller {
+class ControllerExtensionModuleFilterpromahan extends Controller {
   
-  public function index() {
+	public function index() {
 		
-		$this->load->language('extension/module/magicfilter');
+		$this->load->language('extension/module/filterpromahan');
         $data['heading_title'] = $this->language->get('heading_title');
 		
 		$this->load->model('extension/module/filterpromahan');
@@ -50,12 +50,32 @@ class ControllerModuleFilterpromahan extends Controller {
                 $category_id = '';
                 $category_id = (int) array_pop($parts);
             }
-			
-			$manufactureNames = $this->model_extension_module_filterpromahan->getManufactureName($category_id);
+			$url = '';
 
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+
+			if (isset($this->request->get['limit'])) {
+				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+			$manufactureNames = $this->model_extension_module_filterpromahan->getManufactureName($category_id);
 			
+			foreach($manufactureNames as $manufactureName){
+				$data['manufactures'][]= array(
+					'manufacture_id' => $manufactureName['manufacturer_id'],
+					'name' => $manufactureName['name'],
+					'href' => $this->url->link('product/category', 'path=' . $category_id . $url.'&manufacturer_id='.$manufactureName['manufacturer_id'])
+				);
+			}
+			
+			return $this->load->view('extension/module/filterpromahan',$data);
 		}
 
 	}
-  
 }
