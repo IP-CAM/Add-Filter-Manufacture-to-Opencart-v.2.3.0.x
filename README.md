@@ -13,12 +13,13 @@ Catalog\controller\product\category.php need to change
 	}
 	3. Add line 158: 
 	if (isset($this->request->get['manufacturer_id'])) {
-		$url .= '&manufacturer_id=' . $this->request->get['manufacturer_id'];}
-  4. Add line 358:
-      if (isset($this->request->get['manufacturer_id'])) {
-      $url .= '&manufacturer_id=' . $this->request->get['manufacturer_id'];
-      }
+		$url .= '&manufacturer_id=' . $this->request->get['manufacturer_id'];
+	}
+	4. Add line 358:
+	      if (isset($this->request->get['manufacturer_id'])) {
+	      $url .= '&manufacturer_id=' . $this->request->get['manufacturer_id'];
+	      }
 	5. Add line 426:
 	if (isset($this->request->get['manufacturer_id'])) {
-  $url .= '&manufacturer_id=' . $this->request->get['manufacturer_id'];
-  }
+		$url .= '&manufacturer_id=' . $this->request->get['manufacturer_id'];
+		}
