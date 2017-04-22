@@ -74,7 +74,8 @@ class ControllerExtensionModuleFilterpromahan extends Controller {
 				);
 			}
 			
-			return $this->load->view('extension/module/filterpromahan',$data);
+			if(count($data['manufactures'])>1)
+				return $this->load->view('extension/module/filterpromahan',$data);
 		}
 
 	}
